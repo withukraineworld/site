@@ -122,17 +122,23 @@
   });
 
   function updateTweet() {
-    const message = $('#message').val();
+    const TWITTER_MAX_CHARS = 280;
+    const hashtags = '#WorldWithUkraine';
+    const url = 'http://withukraine.world';
+    const message = $('#message').val().trim();
     const pols = multiselect.getSelection();
     const mentions = pols.map(x => x.twitter).join(' ');
-    if (!message.trim() || !mentions.trim()) {
+    function makeTweet(msg) {
+      return `${mentions} ${msg} ${hashtags} ${url}`;
+    }
+    const remainingChars = TWITTER_MAX_CHARS - makeTweet('').length;
+    if (!message || !mentions.trim() || message.length > remainingChars) {
       $('#sendLinkContainer').addClass('sendLinkContainerDisabled');
       $('#sendLink').attr('target', null);
       $('#sendLink').attr('href', 'javascript:void(0)');
       return;
     }
-
-    const tweet = `${mentions} ${message}`;
+    const tweet = makeTweet(message);
     const href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`;
     $('#sendLinkContainer').removeClass('sendLinkContainerDisabled');
     $('#sendLink').attr('target', "_blank");
