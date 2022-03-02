@@ -106,6 +106,9 @@
     const countryMessage = globalConfig && globalConfig.messages && globalConfig.messages[country];
     if (countryMessage) {
       $('#message').val(countryMessage);
+    } else {
+      const defaultMessage = globalConfig && globalConfig.messages && globalConfig.messages['default'];
+      $('#message').val(defaultMessage);
     }
     updateTweet();
   }

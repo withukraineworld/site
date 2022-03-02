@@ -8,7 +8,7 @@ msgs = pd.read_csv(os.getenv('MESSAGES_CSV_URL'))
 msgs = msgs.set_index('country').fillna('')
 
 df = pd.read_csv(os.getenv('POLITICIANS_CSV_URL'))
-print(df.columns)
+df = df.dropna(subset=['twitter'])
 config = {
     'countries': list(df['country'].unique()),
     'messages': msgs['message'].to_dict()
