@@ -114,6 +114,8 @@
   }
 
   $.getJSON('assets/data/config.json', function (config) {
+
+
     globalConfig = config;
     $("#country").countrySelect({
       // onlyCountries: ['us', 'ca', 'tr', 'at', 'be', 'bg', 'hr', 'cy', 'cz', 'dk', 'ee', 'fi', 'fr', 'de', 'gr', 'hu', 'ie', 'it', 'lv', 'lt', 'lu', 'mt', 'nl', 'pl', 'pt', 'ro', 'sk', 'si', 'es', 'se', 'gb'],
@@ -122,6 +124,13 @@
     });
     $('#country').change(onChangeCountry);
     onChangeCountry();
+    $.getJSON('https://europe-central2-withukraine-342906.cloudfunctions.net/geolocation2', function (ipdata) {
+      const visitorCountry = ipdata.country.toLowerCase();
+      if (config.countries.indexOf(visitorCountry) !== -1) {
+        $("#country").countrySelect("selectCountry", visitorCountry);
+        onChangeCountry();
+      }
+    });
   });
 
   function updateTweet() {
