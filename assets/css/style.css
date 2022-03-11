@@ -15,6 +15,13 @@ body {
   background-size: cover;
   position: relative;
   background-attachment: fixed;
+
+}
+
+@media only screen and (max-device-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
 }
 
 body::before {
