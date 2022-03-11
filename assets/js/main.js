@@ -79,6 +79,8 @@
 
   let multiselect;
   let globalConfig;
+  let countryMessageIndex = 0;
+  let countryMessages = [];
 
 
   multiselect = $('#multiselect').magicSuggest({
@@ -90,6 +92,15 @@
   $(multiselect).on('selectionchange', function () {
     updateTweet();
   });
+
+  $('#changeMessage').on('click', function () {
+    countryMessageIndex += 1;
+    if (countryMessageIndex > countryMessages.length-1) {
+      countryMessageIndex = 0;
+    }
+    $('#message').val(countryMessages[countryMessageIndex]);
+    updateTweet();
+  })
 
 
   function onChangeCountry() {
@@ -103,12 +114,16 @@
       console.log(politiciansJson);
       multiselect.setData(politiciansJson);
     });
-    const countryMessage = globalConfig && globalConfig.messages && globalConfig.messages[country];
-    if (countryMessage) {
-      $('#message').val(countryMessage);
-    } else {
-      const defaultMessage = globalConfig && globalConfig.messages && globalConfig.messages['default'];
-      $('#message').val(defaultMessage);
+    countryMessages = globalConfig && globalConfig.messages && globalConfig.messages[country];
+    countryMessageIndex = 0;
+    if (!countryMessages) {
+      const defaultMessages = globalConfig && globalConfig.messages && globalConfig.messages['default'];
+      countryMessages = defaultMessages;
+    }
+    $('#message').val(countryMessages[countryMessageIndex]);
+    $('#changeMessage').hide();
+    if (countryMessages.length > 0) {
+      $('#changeMessage').show();
     }
     updateTweet();
   }
@@ -136,7 +151,7 @@
   function updateTweet() {
     const TWITTER_MAX_CHARS = 280;
     const hashtags = '#WorldWithUkraine';
-    const url = 'http://withukraine.world';
+    const url = 'https://withukraine.world';
     const message = $('#message').val().trim();
     const pols = multiselect.getSelection();
     const mentions = pols.map(x => x.twitter).join(' ');

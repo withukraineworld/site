@@ -7,6 +7,11 @@
   <title>withukraine.world</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
+  <meta property="og:url" content="https://withukraine.world" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="#WorldWithUkraine" />
+  <meta property="og:description" content="Let's push politicians for a Russian defeat in Ukraine." />
+  <meta property="og:image" content="http://withukraine.world/assets/img/subway3.jpg" />
 
   <!-- Favicons -->
   <link href="assets/img/favicon.ico" rel="icon">
@@ -35,6 +40,10 @@
 </head>
 
 <body>
+  <div id="fb-root"></div>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0"
+    nonce="xF6CQIdW"></script>
+
 
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
@@ -78,15 +87,16 @@
                 <textarea id="message" class="form-control" name="message" rows="3" placeholder="Type something here"
                   required></textarea>
               </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+
+              <div class="text-left" style="padding-bottom: 50px;padding-top: 10px;">
+                <a id="changeMessage" class="WWUbutton" href="javascript:void(0)" style="font-size:small">Try a
+                  different message!</a>
               </div>
 
               <div class="text-center" id="sendLinkContainer">
-                <a id="sendLink" href="javascript:void(0)">Prepare your tweet</a>
-                <div class="text-center" style="padding-top:20px">You will be able to review your tweet before posting
+                <a id="sendLink" class="WWUbutton" href="javascript:void(0)" style="font-size: large;">Prepare your
+                  tweet</a>
+                <div class="text-center" style="padding-top:20px">You will be able to review it before posting
                   it.</div>
               </div>
 
@@ -107,8 +117,15 @@
 
       <div class="social-links text-center">
         <!-- <a href="#" class="twitter"><i class="bi bi-twitter"></i></a> -->
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <!-- <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fwithukraine.world%2F&amp;src=sdkpreparse" class="facebook"><i class="bi bi-facebook"></i></a> -->
+
+        <div class="fb-share-button" data-href="https://withukraine.world/" data-layout="button" data-size="large"><a
+            target="_blank"
+            href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwithukraine.world%2F&amp;src=sdkpreparse"
+            class="fb-xfbml-parse-ignore">Share</a></div>
+
+
+        <!-- <a href="#" class="instagram"><i class="bi bi-instagram"></i></a> -->
         <!-- <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a> -->
       </div>
     </div>

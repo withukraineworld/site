@@ -24,7 +24,7 @@ body::before {
   right: 0;
   top: 0;
   bottom: 0;
-  background: rgba(49, 71, 89, 0.6);
+  background: rgb(22 38 50 / 78%)
 }
 
 @media (min-width: 1024px) {
@@ -43,7 +43,7 @@ a:hover {
   text-decoration: none;
 }
 
-#sendLink {
+.WWUbutton {
   background: #039;
   border: 0;
   padding: 10px 24px;
@@ -53,9 +53,9 @@ a:hover {
   border-radius: 50px;
 }
 
-#sendLink:hover {
+.WWUbutton:hover {
   background: rgb(55, 122, 255);
-
+  color: white;
 }
 
 h1, h2, h3, h4, h5, h6 {
