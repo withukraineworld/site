@@ -122,7 +122,7 @@
     }
     $('#message').val(countryMessages[countryMessageIndex]);
     $('#changeMessage').hide();
-    if (countryMessages.length > 0) {
+    if (countryMessages.length > 1) {
       $('#changeMessage').show();
     }
     updateTweet();
