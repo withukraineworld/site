@@ -103,6 +103,10 @@
     updateTweet();
   });
 
+  $('#replyCheck').on('change', function () {
+    updateTweet();
+  })
+
   $('#changeMessage').on('click', function () {
     countryMessageIndex += 1;
     if (countryMessageIndex > countryMessages.length - 1) {
@@ -177,7 +181,9 @@
       return;
     }
     const tweet = makeTweet(message);
-    const href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`;
+    const useReply = $('#replyCheck').is(":checked");
+    const replyParams = useReply ? '&in_reply_to=1503278351145918467' : '';
+    const href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}${replyParams}`;
     $('#sendLinkContainer').removeClass('sendLinkContainerDisabled');
     $('#sendLink').attr('target', "_blank");
     $('#sendLink').attr('href', href);
