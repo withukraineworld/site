@@ -7,6 +7,16 @@
 (function () {
   "use strict";
 
+  function shuffleArrayInplace(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+  }
+
+
   /**
    * Easy selector helper function
    */
@@ -95,7 +105,7 @@
 
   $('#changeMessage').on('click', function () {
     countryMessageIndex += 1;
-    if (countryMessageIndex > countryMessages.length-1) {
+    if (countryMessageIndex > countryMessages.length - 1) {
       countryMessageIndex = 0;
     }
     $('#message').val(countryMessages[countryMessageIndex]);
@@ -120,11 +130,12 @@
       const defaultMessages = globalConfig && globalConfig.messages && globalConfig.messages['default'];
       countryMessages = defaultMessages;
     }
-    $('#message').val(countryMessages[countryMessageIndex]);
     $('#changeMessage').hide();
     if (countryMessages.length > 1) {
+      shuffleArrayInplace(countryMessages);
       $('#changeMessage').show();
     }
+    $('#message').val(countryMessages[countryMessageIndex]);
     updateTweet();
   }
 
