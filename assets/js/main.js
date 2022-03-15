@@ -165,8 +165,8 @@
 
   function updateTweet() {
     const TWITTER_MAX_CHARS = 280;
-    const hashtags = '#WorldWithUkraine';
-    const url = 'https://withukraine.world';
+    const hashtags = '#PushForUkraine';
+    const url = 'pushforukraine.com';
     const message = $('#message').val().trim();
     const pols = multiselect.getSelection();
     const mentions = pols.map(x => x.twitter).join(' ');
